@@ -100,3 +100,9 @@ gen-loadtest-modes: ## Generate loadtest modes strings.
 .PHONY: gen-json-rpctypes
 gen-json-rpctypes: ## Generate JSON rpc types.
 	./scripts/rpctypes.sh rpctypes/jsonschemas/
+
+# Load test target for Geth node
+.PHONY: geth-loadtest
+geth-loadtest: ## Run Geth load tests.
+	@echo "Running Geth load tests..."
+	go test -v ./tests/loadtest/geth/... -timeout 30m
